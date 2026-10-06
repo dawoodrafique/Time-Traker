@@ -1,0 +1,46 @@
+{
+  "name": "time-tracker",
+  "version": "1.0.0",
+  "description": "Offline personal study time tracker",
+  "main": "main.js",
+  "author": "Time Tracker",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "local.timetracker",
+    "productName": "Time Tracker",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "electronLanguages": [
+      "en-US"
+    ],
+    "compression": "maximum",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  }
+}
